@@ -86,6 +86,10 @@ var (
 )
 
 func init() {
+	root := os.Getenv("GOVENDORROOT")
+	if root != "" {
+		return root
+	}
 	wd, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
