@@ -86,18 +86,20 @@ var (
 )
 
 func init() {
-	root := os.Getenv("GOVENDORROOT")
-	if root != "" {
-		return root
+	vendorDir = os.Getenv("GOVENDORROOT")
+	if vendorDir != "" {
+		manifestFile = filepath.Join(vendorDir, "manifest")
+		return
 	}
+
 	wd, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	vendorDir = filepath.Join(wd, "vendor")
 	manifestFile = filepath.Join(vendorDir, "manifest")
 	srcTree := filepath.Join(build.Default.GOPATH, "src") + string(filepath.Separator)
-
 	if build.Default.GOPATH == "" || (!strings.HasPrefix(wd, srcTree) && wd != srcTree[:len(srcTree)-1]) {
 		log.Println("WARNING: for go vendoring to work your project needs to be somewhere under $GOPATH/src/")
 	} else {

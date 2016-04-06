@@ -4,7 +4,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/FiloSottile/gvt/gbvendor"
+	"github.com/alecthomas/gvt/gbvendor"
 )
 
 type cacheKey struct {

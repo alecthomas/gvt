@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/FiloSottile/gvt/fileutils"
+	"github.com/alecthomas/gvt/fileutils"
 )
 
 func mktemp(t *testing.T) string {
